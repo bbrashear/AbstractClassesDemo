@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractClasses
+namespace ConsoleUI
 {
     class Program
     {
@@ -33,17 +33,47 @@ namespace AbstractClasses
 
             // Create a list of Vehicle called vehicles
 
+            List<Vehicle> vehicles = new List<Vehicle>();
+
             /*
              * Create 4 instances, 1 Car, 1 Motorcycle, and then 2 Vehicles - new it up as one of each derived class
              * Set the properties with object initializer syntax
              */
+
+            Car myCar = new Car() {Year = 2014, Make = "Buick", Model = "Encore", HasTrunk = true };
+
+            Motorcycle myMotorcycle = new Motorcycle() { Year = 1958, Make = "Honda", Model = "Super Cub", HasSideCart = true };
+
+            Vehicle vehicle1 = new Car() { Year = 2009, Make = "Honda", Model = "Civic", HasTrunk = true};
+
+            Vehicle vehicle2 = new Motorcycle() { Year = 2009, Make = "Kawasaki", Model = "Ninja", HasSideCart = false };
 
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
 
+            vehicles.Add(myCar);
+            vehicles.Add(myMotorcycle);
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
+
+            foreach(var vehicle in vehicles)
+            {
+                Console.WriteLine($"{vehicle.Year}, {vehicle.Make}, {vehicle.Model}");
+            }
+
             // Call each of the drive methods for one car and one motorcycle
+            Console.ReadLine();
+            Console.WriteLine();
+
+            myCar.DriveAbstract();
+            myCar.DriveVirtual(myCar);
+
+            Console.WriteLine();
+
+            myMotorcycle.DriveAbstract();
+            myMotorcycle.DriveVirtual(myMotorcycle);
 
             #endregion            
             Console.ReadLine();
